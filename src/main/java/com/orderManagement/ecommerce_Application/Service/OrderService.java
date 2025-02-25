@@ -1,6 +1,6 @@
 package com.orderManagement.ecommerce_Application.Service;
 
-import com.orderManagement.ecommerce_Application.Model.Order;
+import com.orderManagement.ecommerce_Application.Model.Orders;
 import com.orderManagement.ecommerce_Application.Repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,15 +11,15 @@ import java.util.List;
 public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
-    public Order placeOrder(Order order){
-        return orderRepository.save(order);
+    public Orders placeOrder(Orders orders){
+        return orderRepository.save(orders);
     }
 
-    public List<Order> getAllOrders(){
+    public List<Orders> getAllOrders(){
         return orderRepository.findAll();
     }
 
-    public Order getOrderById(Long id){
+    public Orders getOrderById(Long id){
         return orderRepository.findById(id).orElse(null);
     }
 

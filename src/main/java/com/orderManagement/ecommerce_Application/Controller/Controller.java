@@ -1,30 +1,33 @@
 package com.orderManagement.ecommerce_Application.Controller;
 
-import com.orderManagement.ecommerce_Application.Model.Order;
-import com.orderManagement.ecommerce_Application.Repository.Service.OrderService;
-import lombok.Data;
+import com.orderManagement.ecommerce_Application.Model.Orders;
+import com.orderManagement.ecommerce_Application.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@Data
+
 @RestController
 @RequestMapping("/orders")
-@Autowired
-public class Controller {
-    public  OrderService orderService;
 
-    @PostMapping
-    public Order placeOrder(@RequestBody Order order){
-        return orderService.placeOrder(order);
+public class Controller {
+    public  final OrderService orderService;
+    @Autowired
+    public Controller(OrderService orderService){
+        this.orderService = orderService;
+    }
+
+    @PostMapping("/CreateOrder")
+    public Orders placeOrder(@RequestBody Orders orders){
+        return orderService.placeOrder(orders);
     }
     @GetMapping
-    public List<Order> getAllOrders(){
+    public List<Orders> getAllOrders(){
         return orderService.getAllOrders();
     }
 
     @GetMapping("/{id}")
-    public Order getOrderById(@PathVariable Long id){
+    public Orders getOrderById(@PathVariable Long id){
         return orderService.getOrderById(id);
     }
 
