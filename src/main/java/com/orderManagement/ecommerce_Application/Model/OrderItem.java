@@ -47,4 +47,6 @@ public class OrderItem {
     private String itemName;
     private int quantity;
     private double price;
+    private String itemSku;
+
 }
