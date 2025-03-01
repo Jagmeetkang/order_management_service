@@ -60,9 +60,9 @@ public class Orders {
     private String status;
     private String orderNumber;
 
+    //Order number to primary
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderItem> items;
-
 
 
 
